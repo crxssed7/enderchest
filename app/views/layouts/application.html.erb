@@ -11,6 +11,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="bg-50 top-0 left-0 fixed w-full h-full z-[-10]" style="background-image: url('<%= asset_url("dirt.jpg") %>');"></div>
+    <main class="mx-auto max-w-5xl px-4 mt-[75px] mb-[75px] bg-white drop-shadow-2xl">
+      <div class="p-8">
+        <%= image_tag "logo.png", class: "mx-auto" %>
+
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>
