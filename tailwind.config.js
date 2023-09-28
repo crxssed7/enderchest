@@ -11,6 +11,9 @@ module.exports = {
       'cover': 'cover',
       'contain': 'contain',
       '50': '50px',
+    },
+    fontFamily: {
+      'nav': ['VT323', 'monospace']
     }
   }
 }
