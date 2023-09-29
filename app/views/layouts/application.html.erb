@@ -20,20 +20,23 @@
       <div class="p-8 border-b-4 mb-8">
         <%= image_tag "logo.png", class: "mx-auto" %>
         <div class="flex flex-wrap gap-4 justify-center pt-8">
-          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 bg-gray-200 border-2 border-gray-300" href="<%= root_path %>">home</a>
-          <a class="underline hover:no-underline font-nav text-lg px-3 py-2" href="">worlds</a>
-          <a class="underline hover:no-underline font-nav text-lg px-3 py-2" href="">players</a>
+          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 <% if controller_name == "pages" %>bg-gray-200 border-2 border-gray-300<% end %>" href="<%= root_path %>">home</a>
+          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 <% if controller_name == "worlds" %>bg-gray-200 border-2 border-gray-300<% end %>" href="">worlds</a>
+          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 <% if controller_name == "players" %>bg-gray-200 border-2 border-gray-300<% end %>" href="">players</a>
           <% if current_user %>
             <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
           <% else %>
-            <%= link_to "sign up", new_user_registration_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
-            <%= link_to "sign in", new_user_session_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
+            <%= link_to "sign up", new_user_registration_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2#{controller_name == "registrations" && action_name == "new" ? " bg-gray-200 border-2 border-gray-300" : ""}" %>
+            <%= link_to "sign in", new_user_session_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2#{controller_name == "sessions" && action_name == "new" ? " bg-gray-200 border-2 border-gray-300" : ""}" %>
           <% end %>
         </div>
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
+      <div class="py-8 border-t-4 mt-8">
+        <p class="font-nav text-lg">all worlds found on this site are credited to their creators. this site would not exist without them.</p>
+      </div>
     </main>
   </body>
 </html>
