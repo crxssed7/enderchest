@@ -19,12 +19,20 @@
     <main class="mx-auto max-w-5xl px-4 mt-[75px] mb-[75px] bg-white drop-shadow-2xl">
       <div class="p-8 border-b-4 mb-8">
         <%= image_tag "logo.png", class: "mx-auto" %>
-        <div class="flex gap-4 justify-center pt-8">
-          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 bg-gray-200 border-2 border-gray-300" href="">home</a>
+        <div class="flex flex-wrap gap-4 justify-center pt-8">
+          <a class="underline hover:no-underline font-nav text-lg px-3 py-2 bg-gray-200 border-2 border-gray-300" href="<%= root_path %>">home</a>
           <a class="underline hover:no-underline font-nav text-lg px-3 py-2" href="">worlds</a>
           <a class="underline hover:no-underline font-nav text-lg px-3 py-2" href="">players</a>
+          <% if current_user %>
+            <%= button_to "sign out", destroy_user_session_path, method: :delete, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
+          <% else %>
+            <%= link_to "sign up", new_user_registration_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
+            <%= link_to "sign in", new_user_session_path, class: "underline hover:no-underline font-nav text-lg px-3 py-2" %>
+          <% end %>
         </div>
       </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
   </body>
